@@ -48,7 +48,33 @@ local options = {
     },
   },
 
-  extensions_list = { "themes", "terms" },
+  extensions = {
+    whaler = {
+      directories = {
+        { path = "~/.config/", alias = "configs" },
+        { path = "~/sandbox", alias = "sandbox" },
+        { path = "~/sandbox/finance", alias = "finance" },
+        "~/sandbox/network",
+        { path = "/mnt/c/users/vagrant/projects/Sandbox/Graphics", alias = "windows" }
+      },
+      oneoff_directories = { "~/sandbox/playground",  { path = "~/sandbox/rustlings", alias = "Project Rust" } },
+      auto_cwd = true,
+      file_explorer = "nvimtree",
+      theme = {                -- Telescope theme default Whaler options.
+        results_title = false,
+        layout_strategy = "center",
+        previewer = true,
+        layout_config = {
+          height =  0.3,
+          width = 0.5
+        },
+        sorting_strategy = "ascending",
+        border = true
+      }
+    }
+  },
+
+  extensions_list = { "themes", "terms", "whaler" },
 }
 
 return options

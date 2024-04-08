@@ -121,7 +121,18 @@ local default_plugins = {
     event = "User FilePost",
     config = function()
       require "plugins.configs.lspconfig"
+      require "custom.lspconfig"
     end,
+    dependencies = {
+        {
+            "SmiteshP/nvim-navbuddy",
+            dependencies = {
+                "SmiteshP/nvim-navic",
+                "MunifTanjim/nui.nvim"
+            },
+            opts = { lsp = { auto_attach = true } }
+        }
+    },
   },
 
   -- load luasnips + cmp related in insert mode only
@@ -208,7 +219,10 @@ local default_plugins = {
 
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    dependencies = {
+        "nvim-treesitter/nvim-treesitter",
+        "SalOrak/whaler"
+    },
     cmd = "Telescope",
     init = function()
       require("core.utils").load_mappings "telescope"
@@ -227,6 +241,7 @@ local default_plugins = {
       end
     end,
   },
+
 
   -- Only load whichkey after all the gui
   {
